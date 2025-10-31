@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 import { CreateMemberDto } from './dto/create-member.dto'
 import { UpdateMemberDto } from './dto/update-member.dto'
-import { Repository } from 'typeorm'
 import { Member } from './entities/member.entity'
-import { InjectRepository } from '@nestjs/typeorm'
 import { registrationGenerator } from './helpers/resgistrationGenerator'
 
 @Injectable()

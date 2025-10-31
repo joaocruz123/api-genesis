@@ -10,11 +10,11 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'genesis_db',
+      host: this.configService.get<string>('DATABASE_HOST'),
+      port: this.configService.get<number>('DATABASE_PORT'),
+      username: this.configService.get<string>('DATABASE_USERNAME'),
+      password: this.configService.get<string>('DATABASE_PASSWORD'),
+      database: this.configService.get<string>('DATABASE_DATABASE'),
       synchronize: true,
       extra: {
         ssl: false,

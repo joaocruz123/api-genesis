@@ -10,7 +10,7 @@ export class Member {
   @Column()
   name: string
 
-  @Column()
+  @Column({ default: registrationGenerator() })
   registration_member: string
 
   @Column({ type: 'varchar', nullable: true })
@@ -70,10 +70,33 @@ export class Member {
   @Column({ type: 'varchar', nullable: true })
   avatar?: string | null
 
-  constructor(props: Partial<Member>, id?: string) {
+  constructor(
+    props: {
+      name: string
+      registration_member: string
+      cep?: string | null
+      street?: string | null
+      neighborhood?: string | null
+      city?: string | null
+      state?: string | null
+      number?: string | null
+      complement?: string | null
+      marital_status?: string | null
+      date_birth?: Date | null
+      rg: string
+      sexo: string
+      phone: string
+      cpf: string
+      conversion_date?: Date | null
+      baptized?: boolean | null
+      away?: boolean | null
+      function?: string | null
+      avatar: string | null
+      status: boolean
+    },
+    id?: string,
+  ) {
     Object.assign(this, props)
     this.id = id ?? uuidv4()
-    this.registration_member =
-      props.registration_member ?? registrationGenerator()
   }
 }
